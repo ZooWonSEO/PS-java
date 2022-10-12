@@ -6,18 +6,23 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        String str = sc.nextLine();
-        int m = sc.nextInt();
+        int n = sc.nextInt();
+        ArrayList<Integer> list = new ArrayList<>();
 
-        char[] arr= str.toCharArray();
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<arr.length; i++){
-            sb.append(arr[i]);
+        for(int i=0; i<n; i++) {
+            list.add(sc.nextInt());
         }
 
+        Collections.sort(list, Collections.reverseOrder());
 
+        int answer = 0;
+        int cnt = 0;
 
+        while(cnt < n) {
+            cnt = cnt + list.get(cnt);
+            answer ++;
+        }
 
-
+        System.out.print(answer);
     }
 }
