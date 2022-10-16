@@ -26,20 +26,24 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        ArrayList<Integer> list = new ArrayList<>();
+        int arr[] = new int[n];
 
         for(int i=0; i<n; i++) {
-            list.add(sc.nextInt());
+            arr[i] = sc.nextInt();
         }
 
-        Collections.sort(list, Collections.reverseOrder());
+        Arrays.sort(arr);
 
         int answer = 0;
-        int cnt = 0;
+        int cnt = 0 ;
 
-        while(cnt < n) {
-            cnt = cnt + list.get(cnt);
-            answer ++;
+        for(int i=0; i<arr.length; i++) {
+
+            cnt ++;
+            if(cnt >= arr[i]) {
+                answer++;
+                cnt = 0;
+            }
         }
 
         System.out.print(answer);

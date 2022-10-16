@@ -35,14 +35,16 @@ public class Main {
 
         for(int i=0; i<arr.length; i++) {
 
-            if(answer == 0 || arr[i] == '0') {
-                answer = answer + (arr[i] - '0');
-            }
+            int num = arr[i] - '0';
 
+            if(answer<=1 || num<=1) {
+                answer = answer + num;
+            }
             else {
-                answer = answer * (arr[i] - '0');
+                answer = answer * num;
             }
         }
+
         System.out.print(answer);
 
     }
