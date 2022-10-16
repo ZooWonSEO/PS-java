@@ -8,21 +8,42 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        int m = sc.nextInt();
-        int balls[] = new int[m+1];
+        sc.nextLine();
+        String s = sc.nextLine();
+        char arr[] = s.toCharArray();
 
-        for(int i=0; i<n; i++) {
-            int input = sc.nextInt();
-            balls[input] ++;
+        int row = 1;
+        int col = 1;
+
+        for(int i=0; i<arr.length; i++) {
+
+            int r = 0;
+            int c = 0;
+
+            if(arr[i] == 'L') {
+                c = -1;
+            }
+
+            else if(arr[i] == 'R') {
+                c = 1;
+            }
+
+            else if(arr[i] == 'U') {
+                r = -1;
+            }
+
+            else if(arr[i] == 'D') {
+                r = 1;
+            }
+
+            if(row+r > n || col+c > n || row+r < 1 || col+c < 1)
+                continue;
+
+            row = row + r;
+            col = col + c;
         }
 
-        int answer = 0;
-        for(int i=1; i<m; i++) {
-            n = n - balls[i];
-            answer = answer + (n * balls[i]);
-        }
-
-        System.out.print(answer);
+        System.out.print(row + " " + col);
 
     }
 }
