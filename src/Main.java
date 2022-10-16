@@ -1,4 +1,3 @@
-
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -9,22 +8,21 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        int arr[] = new int[n];
+        int m = sc.nextInt();
+        int balls[] = new int[m+1];
 
         for(int i=0; i<n; i++) {
-            arr[i] = sc.nextInt();
+            int input = sc.nextInt();
+            balls[input] ++;
         }
 
-        Arrays.sort(arr);
-
-        int answer = 1;
-        for(int i=0; i<arr.length; i++) {
-            if(answer < arr[i])
-                break;
-
-            answer = answer + arr[i];
+        int answer = 0;
+        for(int i=1; i<m; i++) {
+            n = n - balls[i];
+            answer = answer + (n * balls[i]);
         }
 
-        System.out.println(answer);
+        System.out.print(answer);
+
     }
 }

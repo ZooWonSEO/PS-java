@@ -10,7 +10,6 @@ A, B 두 사람은 서로 무게가 다른 볼링공을 고르려고 합니다.
 
 N개의 공의 무게가 각각 주어질 때, 두사람이 볼링공을 고르는 경우의 수를 구하세요.
 
-
 [입력1]
 5 3
 1 3 2 3 2
@@ -25,5 +24,33 @@ N개의 공의 무게가 각각 주어질 때, 두사람이 볼링공을 고르�
 [출력2]
 25
 
-
  */
+
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String args[]){
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int balls[] = new int[m+1];
+
+        for(int i=0; i<n; i++) {
+            int input = sc.nextInt();
+            balls[input] ++;
+        }
+
+        int answer = 0;
+        for(int i=1; i<m; i++) {
+            n = n - balls[i];
+            answer = answer + (n * balls[i]);
+        }
+
+        System.out.print(answer);
+
+    }
+}
