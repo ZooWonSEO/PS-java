@@ -6,68 +6,28 @@ public class Main {
     public static void main(String args[]){
 
         Scanner sc = new Scanner(System.in);
+
         int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] map = new int[n][m];
 
-        int h = 0;
-        int m = 0;
-        int s = 0;
-        int answer = 0;
+        int px = sc.nextInt();
+        int py = sc.nextInt();
+        int d = sc.nextInt();
 
-        while(true) {
-
-            if(h == n+1 && m == 0 && s == 0)
-                break;
-
-            s++;
-
-            if(s == 60) {
-                s = 0;
-                m = m + 1;
-            }
-
-            if(m == 60) {
-                m = 0;
-                h = h + 1;
-            }
-
-            if(String.valueOf(h).length() == 2) {
-                if(String.valueOf(h).charAt(0) == '3' || String.valueOf(h).charAt(1) == '3') {
-                    answer = answer + 1;
-                    continue;
-                }
-            }
-            else {
-                if(String.valueOf(h).charAt(0) == '3') {
-                    answer = answer + 1;
-                    continue;
-                }
-            }
-
-            if(String.valueOf(m).length() == 2) {
-                if(String.valueOf(m).charAt(0) == '3' || String.valueOf(m).charAt(1) == '3') {
-                    answer = answer + 1;
-                    continue;
-                }
-            }
-            else {
-                if(String.valueOf(m).charAt(0) == '3') {
-                    answer = answer + 1;
-                    continue;
-                }
-            }
-
-            if(String.valueOf(s).length() == 2) {
-                if(String.valueOf(s).charAt(0) == '3' || String.valueOf(s).charAt(1) == '3') {
-                    answer = answer + 1;
-                }
-            }
-            else {
-                if (String.valueOf(s).charAt(0) == '3') {
-                    answer = answer + 1;
-                }
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                map[i][j] = sc.nextInt();
             }
         }
 
-        System.out.print(answer);
+        int[] x = {-1, 0, 1, 0};
+        int[] y = {0, 1, 0, -1};
+
+        int answer = 0;
+
+
+
+        System.out.println(answer);
     }
 }
