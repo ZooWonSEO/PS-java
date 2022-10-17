@@ -31,38 +31,31 @@ public class Main {
 
         int n = sc.nextInt();
         sc.nextLine();
-        String s = sc.nextLine();
-        char arr[] = s.toCharArray();
+        String[] arr = sc.nextLine().split(" ");
 
         int row = 1;
         int col = 1;
 
+        int[] r = {0, 0, -1, 1};
+        int[] c = {-1, 1, 0, 0};
+        char[] cmd = {'L', 'R', 'U', 'D'};
+
         for(int i=0; i<arr.length; i++) {
 
-            int r = 0;
-            int c = 0;
-
-            if(arr[i] == 'L') {
-                c = -1;
+            int nx = 0;
+            int ny = 0;
+            for(int j=0; j<4; j++) {
+                if(cmd[j] == arr[i].charAt(0)) {
+                    nx = row + r[j];
+                    ny = col + c[j];
+                }
             }
 
-            else if(arr[i] == 'R') {
-                c = 1;
-            }
-
-            else if(arr[i] == 'U') {
-                r = -1;
-            }
-
-            else if(arr[i] == 'D') {
-                r = 1;
-            }
-
-            if(row+r > n || col+c > n || row+r < 1 || col+c < 1)
+            if(nx<1 || ny<1 || nx>n || ny>n)
                 continue;
 
-            row = row + r;
-            col = col + c;
+            row = nx;
+            col = ny;
         }
 
         System.out.print(row + " " + col);
