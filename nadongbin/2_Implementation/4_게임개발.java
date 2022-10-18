@@ -36,3 +36,84 @@ A는 북쪽으로 부터, B는 서쪽으로 부터 떨어진 칸의 개수이다
 3
 
 */
+
+
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class Main {
+
+    public static int n, m, x, y, d;
+    public static int[][] map = new int[50][50];
+    public static int[][] visited = new int[50][50];
+
+    public static int[] dx = {-1, 0, 1, 0};
+    public static int[] dy = {0, 1, 0, -1};
+
+    public static void turnLeft() {
+        d = d-1;
+        if(d == -1) {
+            d = 3;
+        }
+        return;
+    }
+
+    public static void main(String args[]){
+
+        Scanner sc = new Scanner(System.in);
+
+        n = sc.nextInt();
+        m = sc.nextInt();
+        x = sc.nextInt();
+        y = sc.nextInt();
+        d = sc.nextInt();
+
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                map[i][j] = sc.nextInt();
+            }
+        }
+
+        visited[x][y] = 1;
+
+        int answer = 1;
+        int turn_time = 0;
+
+        while(true) {
+
+            turnLeft();
+
+            int nx = x + dx[d];
+            int ny = y + dy[d];
+
+            if(map[nx][ny] == 0 && visited[nx][ny] == 0) {
+                x = nx;
+                y = ny;
+                visited[x][y] = 1;
+                answer++;
+                turn_time = 0;
+                continue;
+            }
+
+            else{
+                turn_time++;
+            }
+
+            if(turn_time == 4) {
+                nx = x - dx[d];
+                ny = y - dy[d];
+
+                if(map[nx][ny] == 0) {
+                    x = nx;
+                    y = ny;
+                    turn_time = 0;
+                    continue;
+                }
+
+                else
+                    break;
+            }
+        }
+        System.out.print(answer);
+    }
+}
