@@ -5,30 +5,21 @@ public class Main {
 
     public static void main(String args[]){
 
-        Scanner sc = new Scanner(System.in);
+        Stack<Integer> st = new Stack<>();
 
-        String str = sc.nextLine();
-        ArrayList<Character> list = new ArrayList<>();
-        int number = 0;
+        st.add(5);
+        st.add(2);
+        st.add(3);
+        st.add(7);
+        st.pop();
 
-        for(int i=0; i<str.length(); i++) {
-            if(str.charAt(i)>='0' && str.charAt(i)<='9') {
-                number = number + (str.charAt(i) - '0');
-            }
-            else {
-                list.add(str.charAt(i));
-            }
+        st.add(1);
+        st.add(4);
+        st.pop();
+
+        while(st.isEmpty()==false) {
+            System.out.print(st.peek() + " ");
+            st.pop();
         }
-
-        Collections.sort(list);
-
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<list.size(); i++) {
-            sb.append(list.get(i));
-        }
-
-        String answer = sb.toString();
-        answer = answer + String.valueOf(number);
-        System.out.println(answer);
     }
 }
