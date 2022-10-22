@@ -8,25 +8,27 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         String str = sc.nextLine();
-
-        int left = 0;
-        int right = 0;
+        ArrayList<Character> list = new ArrayList<>();
+        int number = 0;
 
         for(int i=0; i<str.length(); i++) {
-
-            if(i < str.length()/2) {
-                left = left + (str.charAt(i) - '0');
+            if(str.charAt(i)>='0' && str.charAt(i)<='9') {
+                number = number + (str.charAt(i) - '0');
             }
-            else{
-                right = right + (str.charAt(i) - '0');
+            else {
+                list.add(str.charAt(i));
             }
         }
 
-        if(left == right) {
-            System.out.println("LUCKY");
+        Collections.sort(list);
+
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<list.size(); i++) {
+            sb.append(list.get(i));
         }
-        else {
-            System.out.println("READY");
-        }
+
+        String answer = sb.toString();
+        answer = answer + String.valueOf(number);
+        System.out.println(answer);
     }
 }
