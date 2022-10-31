@@ -80,10 +80,8 @@ public class Main {
 
         for(int i=0; i<n; i++) {
             String s = sc.nextLine();
-            char[] s_arr = s.toCharArray();
-
-            for(int j=0; j<s_arr.length; j++) {
-                map[i][j] = s_arr[j] - '0';
+            for(int j=0; j<s.length(); j++) {
+                map[i][j] = s.charAt(j) - '0';
             }
         }
 
