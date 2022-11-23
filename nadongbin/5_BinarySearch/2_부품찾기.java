@@ -1,6 +1,6 @@
 /*
 [문제설명]
-전자매장에는 부품이 N개 있다. 각 부품은 정수 형태의 고유한 번호가 있따.
+전자매장에는 부품이 N개 있다. 각 부품은 정수 형태의 고유한 번호가 있다.
 손님이 M개 종류의 부품 견적서를 요청했다.
 가게 안에 부품이 모두 있는지 확인하는 프로그램을 작성하세요.
 
@@ -21,3 +21,56 @@
 no yes yes
 
 */
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0; i<n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        Arrays.sort(arr);
+
+        int m = sc.nextInt();
+        int ans = -1;
+
+        for(int i=0; i<m; i++) {
+
+            int item = sc.nextInt();
+            int l = 0;
+            int r = arr.length-1;
+
+            while(l<=r) {
+
+                int mid = (int)(l+r)/ 2;
+
+                if(item == arr[mid]){
+                    ans = 0;
+                    break;
+                }
+
+                if(item < arr[mid]) {
+                    r = mid-1;
+                }
+                else if(item > arr[mid]) {
+                    l = mid+1;
+                }
+            }
+
+            if(ans == -1 ) {
+                System.out.println("no");
+            }
+            else{
+                System.out.println("yes");
+            }
+            ans = -1;
+        }
+    }
+}
+
