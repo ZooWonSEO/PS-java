@@ -8,7 +8,8 @@ public class Main {
 
         int x = sc.nextInt();
 
+        int ans =0;
 
-
+        System.out.print(ans);
     }
 }
